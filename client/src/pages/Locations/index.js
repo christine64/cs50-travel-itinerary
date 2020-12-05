@@ -9,6 +9,8 @@ export const Locations = () => {
           'http://localhost:8000/api/locations/',
         );
      
+        console.log(result, 'hello')
+
         setData(result.data);
     });
 
