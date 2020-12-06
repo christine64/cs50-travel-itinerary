@@ -6,16 +6,27 @@ import { Form } from '../../components/Form';
 
 export const Locations = ({ match }) => {
     const [locations, setData] = useState([]);
+    const [error, setError] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const result = await axios('http://localhost:8000/api/locations/');
-
-            setData(result.data);
-        };
-       
         fetchData();
     }, []);
+
+    const fetchData = async () => {
+        const result = await axios('http://localhost:8000/api/locations/');
+
+        setData(result.data);
+    };
+
+    const displayError = (error) => {
+        setError(error);
+    }
+
+    const submitFunc = (data) => {
+        axios.post('http://localhost:8000/api/locations/', data)
+        .then((response) => response.statusText === 'Created' && fetchData())
+        .catch((error) => displayError(error) )
+    }
 
     return (
         <div>
@@ -37,7 +48,8 @@ export const Locations = ({ match }) => {
 
             <div className="locations-form">
                 <h2>Add A New Location:</h2>
-                <Form />
+                { error }
+                <Form submitFunc={submitFunc} />
             </div>
         </div>
     )

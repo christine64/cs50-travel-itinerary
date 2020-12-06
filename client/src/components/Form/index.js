@@ -1,10 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-export const Form = ({ submitUrl }) => {
-  const { register, handleSubmit, errors } = useForm();
+export const Form = ({ submitFunc }) => {
+  const { register, handleSubmit, errors, reset } = useForm();
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => { 
+    submitFunc(data);
+    reset();
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
