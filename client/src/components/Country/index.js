@@ -35,14 +35,14 @@ export const Country = ({ match }) => {
                 <div>
                     { 
                         countryInformation.map((location, index) =>
-                            <div className="country-information" key={index}>
+                            <div className="country-information" key={`location-${index}`}>
                                 <h1>{ location.name }</h1>
                                 <img src={ location.flag } alt={`${country.name} flag`} />
                                 <span>
                                     Currencies: { 
                                         location.currencies.length > 1 
                                         ? location.currencies.map((currency, index) => (
-                                            <span key={index}>
+                                            <span key={`currency-${index}`}>
                                                 <p>{ currency.code }</p>
                                             </span>
                                         ))
@@ -53,11 +53,11 @@ export const Country = ({ match }) => {
                                     Languages: { 
                                         location.languages.length > 1 
                                         ? location.languages.map((language) => (
-                                            <span key={index}>
+                                            <span key={`language-${index}`}>
                                                 <p>{ language.name }</p>
                                             </span>
                                         ))
-                                        : <p>{ location.languages[0] }</p>
+                                        : <p>{ location.languages[0].name }</p>
                                     }
                                 </span>
                             </div>
