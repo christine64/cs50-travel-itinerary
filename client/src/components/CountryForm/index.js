@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-export const Form = ({ submitFunc }) => {
+export const CountryForm = ({ submitFunc }) => {
   const { register, handleSubmit, errors, reset } = useForm();
 
   const onSubmit = data => { 
