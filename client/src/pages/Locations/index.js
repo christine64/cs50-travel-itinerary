@@ -49,7 +49,7 @@ export const Locations = ({ match }) => {
             <div className="locations-form">
                 <h2>Add A New Location:</h2>
                 { error }
-                <Form submitFunc={submitFunc} />
+                <CountryForm submitFunc={submitFunc} />
             </div>
         </div>
     )

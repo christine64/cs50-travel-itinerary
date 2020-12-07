@@ -1,0 +1,17 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <form class="tweet-form p-4 bg-blue-600 bg-opacity-10 flex mt-8 rounded justify-center align-center" action="{% url 'create_post' %}" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" value="submit">Post Tweet</button>
+    </form>
+    <div id="posts-view"></div>
+
+    <div id="next-posts-button"></div>
+
+    <div id="message"></div>
+
+    <script src='{% static "network/index.js" %}' type="text/javascript"></script>
+{% endblock %}
