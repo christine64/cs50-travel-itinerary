@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import './style.css';
+
 export const TravelItinerary = () => {
     const [itineraries, setData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -19,7 +21,7 @@ export const TravelItinerary = () => {
     const parseDate = date => new Date(date).toDateString();
 
     return (
-        <div>
+        <div className="travel-itinerary">
             <h1>Travel Itineraries</h1>
             {
                 itineraries.length > 0 && !loading

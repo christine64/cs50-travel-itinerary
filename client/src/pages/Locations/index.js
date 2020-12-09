@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { CountryForm } from '../../components/CountryForm';
 
+import './style.css';
+
 export const Locations = ({ match }) => {
     const [locations, setData] = useState([]);
     const [error, setError] = useState([]);
@@ -29,7 +31,7 @@ export const Locations = ({ match }) => {
     }
 
     return (
-        <div>
+        <div className="locations">
             <h1>Location</h1>
             {
                 locations.length > 0
