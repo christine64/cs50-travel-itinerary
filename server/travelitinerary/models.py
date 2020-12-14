@@ -23,4 +23,4 @@ class Itinerary(models.Model):
 
 class Wishlist(models.Model):
     location = models.ForeignKey("Location", on_delete=models.CASCADE, related_name="wishlist_location")
-    itinerary = models.ForeignKey("Itinerary", on_delete=models.CASCADE, related_name="wishlist_itinerary")
+    itinerary = models.ForeignKey("Itinerary", on_delete=models.CASCADE, related_name="wishlist_itinerary", null=True, blank=True)

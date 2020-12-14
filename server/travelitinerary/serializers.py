@@ -20,6 +20,29 @@ class ItinerarySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class WishlistSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+    location = serializers.PrimaryKeyRelatedField(
+        many=False,
+        queryset=Location.objects.all()
+    )
+
+    itinerary = serializers.PrimaryKeyRelatedField(
+        many=False,
+        queryset=Itinerary.objects.all(),
+        required=False
+    )
+
+    def create(self, validated_data):
+        return Wishlist.objects.create(**validated_data)
+
+    class Meta:
+        model = Wishlist
+        fields = ('id', 'location', 'itinerary')
+
+class RequestWishlistSerializer(serializers.ModelSerializer):
+    location = LocationSerializer(read_only=True)
+    itinerary = ItinerarySerializer(read_only=True)
+
     class Meta:
         model = Wishlist
         depth = 1
