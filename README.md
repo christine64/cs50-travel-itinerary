@@ -1,5 +1,5 @@
 This app is scaffolded using both Django Python for backend and Create-React-App for the front 
-In order to have the app run correctly we must run the frontend application and the backened application, this is so when the front end is running, it will retrieve the information from the database using Django/PHP.
+In order to have the app run correctly we must run the frontend application and the backened application, this is so when the front end is running, it will retrieve the information from the database.
 
 I have decided to seperate these for seperate of concerns, so each application can be distint and if it were used would be far easier to maintain and add more routes/components and state management to the application if necessary that Django would ultimately be insufficient in providing.
 Seperating the concerns would mean better isolation of bugs/problems were they to occur.
