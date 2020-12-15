@@ -17,7 +17,7 @@ To open the app, you must first `cd client` to the front end app and install dep
 
 This will start up the app on localhost:3000, and you should be able to see the front end development build.
 
-# Running the back django application
+# Running the backend django application
 To open the app, you must first `cd server` to the back end app and make migrations and migrate the database
 
 # Make Migrations and migrate
