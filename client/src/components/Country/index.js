@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export const Country = ({ match }) => {
     const [country, setData] = useState([]);
+    const [error, setError] = useState([]);
 
     const [countryInformation, setCountryInformation] = useState([]);
 
@@ -16,16 +17,30 @@ export const Country = ({ match }) => {
         setCountryInformation(result.data);
     }
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await axios(`http://localhost:8000/api/locations/${locationId}/`);
+    const displayError = (error) => {
+        setError(error);
+    }
 
-            setData(result.data);
-            getCountryInformation(result.data.name);
-        };
-       
+    const fetchData = async () => {
+        const result = await axios(`http://localhost:8000/api/locations/${locationId}/`);
+
+        setData(result.data);
+        getCountryInformation(result.data.name);
+    };
+
+    useEffect(() => {
         fetchData();
-    }, [locationId]);
+    }, []);
+
+    const addToWishlist = () => {
+        const data = {
+            "location": country
+        };
+
+        axios.post('http://localhost:8000/api/wishlist/', data)
+        .then((response) => response.statusText === 'Created' && fetchData()) && console.log('posted')
+        .catch((error) => displayError(error) )
+    }
 
     return (
         <div>
@@ -37,6 +52,8 @@ export const Country = ({ match }) => {
                         countryInformation.map((location, index) =>
                             <div className="country-information" key={`location-${index}`}>
                                 <h1>{ location.name }</h1>
+                                <button onClick={ addToWishlist }>Add Country To Wishlist</button>
+                                { error }
                                 <img src={ location.flag } alt={`${country.name} flag`} />
                                 <span>
                                     Currencies: { 
@@ -52,7 +69,7 @@ export const Country = ({ match }) => {
                                 <span>
                                     Languages: { 
                                         location.languages.length > 1 
-                                        ? location.languages.map((language) => (
+                                        ? location.languages.map((language, index) => (
                                             <span key={`language-${index}`}>
                                                 <p>{ language.name }</p>
                                             </span>

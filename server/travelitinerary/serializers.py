@@ -55,10 +55,18 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
-
 class UserSerializerWithToken(serializers.ModelSerializer):
     token = serializers.SerializerMethodField()
     password = serializers.CharField(write_only=True)
+
+    def get_serializer_context(self):
+        request = {
+            'request': self.request, # request object is passed here
+            'format': self.format_kwarg,
+            'view': self
+        }
+        print(request, 'hello request=====>')
+        return request
 
     def get_token(self, obj):
         jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
@@ -66,7 +74,7 @@ class UserSerializerWithToken(serializers.ModelSerializer):
 
         payload = jwt_payload_handler(obj)
         token = jwt_encode_handler(payload)
-        return token
+        return 
 
     def create(self, validated_data):
         password = validated_data.pop('password', None)
