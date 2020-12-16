@@ -34,15 +34,15 @@ Dependent on the python installation on your machine, this will either be python
 
 This will start up the app on localhost:8000, and you should be able to see the back end development build running on development server.
 
-### Features
-# Login & Signup JWT Token - Created using an API endpoint
-# Travel Itinerary
-1. Displays travel itinerary with information on location, travel dates and activities (API endpoint retrieval)
-2. Can add a new travel itinerary from a form that posts to the our django app (API endpoint creation)
-# Locations
-1. Displays a list of locations that user can keep handy if they are looking to travel there (API endpoint retrieval)
-2. Each location is selectable and directs to it's own page where further information on location is displayed from an external API (Rest Countries) 
-3. Can add more countries to the list using the form on the main locations page (API endpoint creation)
-# Wishlist/Future Travel
-1. Displays a list of future travel locations (API endpoint retrieval)
-2. Can delete from wishlist using API endpoint
+## Features
+### 1. Login & Signup JWT Token - Created using an API endpoint
+### 2. Travel Itinerary
+- Displays travel itinerary with information on location, travel dates and activities (API endpoint retrieval)
+- Can add a new travel itinerary from a form that posts to the our django app (API endpoint creation)
+### 3. Locations
+- Displays a list of locations that user can keep handy if they are looking to travel there (API endpoint retrieval)
+- Each location is selectable and directs to it's own page where further information on location is displayed from an external API (Rest Countries) 
+- Can add more countries to the list using the form on the main locations page (API endpoint creation)
+### 4. Wishlist/Future Travel
+- Displays a list of future travel locations (API endpoint retrieval)
+- Can delete from wishlist using API endpoint
