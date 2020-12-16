@@ -27,11 +27,15 @@ const App = () => {
     })
     .then(res => res.json())
     .then(json => {
-      debugger
       if (json.hasOwnProperty('user') || json.hasOwnProperty('username')) {
-        setLoggedIn(true);
-        setUsername(json.username);
-        setError('');
+        const username = localStorage.getItem('username');
+        const user = username.filter(name => username === name);
+
+        if(user) {
+          setLoggedIn(true);
+          setUsername(user.username);
+          setError('');
+        }
       }
     })
     .catch((error) => { 
@@ -85,6 +89,7 @@ const App = () => {
     .then(json => {
       if (json.hasOwnProperty('user') || json.hasOwnProperty('username')) {
         localStorage.setItem('token', json.token);
+        localStorage.setItem('username', json.user.username);
         setLoggedIn(true);
         setUsername(json.user.username)
       } else {

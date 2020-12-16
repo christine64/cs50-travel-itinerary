@@ -15,7 +15,8 @@ export const Locations = ({ match }) => {
     }, []);
 
     const fetchData = async () => {
-        const result = await axios('http://localhost:8000/api/locations/');
+        const user_id = 2;
+        const result = await axios(`http://localhost:8000/api/locations/`);
 
         setData(result.data);
     };

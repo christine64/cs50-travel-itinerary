@@ -32,13 +32,17 @@ export const Country = ({ match }) => {
         fetchData();
     }, []);
 
-    const addToWishlist = () => {
+    const addToWishlist = (e) => {
+        e.preventDefault();
+        const locationId = e.target.value;
         const data = {
-            "location": country
+            "location": locationId
         };
 
         axios.post('http://localhost:8000/api/wishlist/', data)
-        .then((response) => response.statusText === 'Created' && fetchData()) && console.log('posted')
+        .then((response) => 
+            response.statusText === 'Created' && fetchData() && console.log('posted')
+        )
         .catch((error) => displayError(error) )
     }
 
@@ -52,7 +56,7 @@ export const Country = ({ match }) => {
                         countryInformation.map((location, index) =>
                             <div className="country-information" key={`location-${index}`}>
                                 <h1>{ location.name }</h1>
-                                <button onClick={ addToWishlist }>Add Country To Wishlist</button>
+                                <button onClick={ addToWishlist } value={location.id}>Add Country To Wishlist</button>
                                 { error }
                                 <img src={ location.flag } alt={`${country.name} flag`} />
                                 <span>
