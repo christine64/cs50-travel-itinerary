@@ -51,7 +51,7 @@ export const Locations = ({ match }) => {
             <div className="locations-form">
                 <h2>Add A New Location:</h2>
                 { error }
-                <CountryForm submitFunc={submitFunc} />
+                <CountryForm submitFunc={submitFunc} locations={locations} />
             </div>
         </div>
     )

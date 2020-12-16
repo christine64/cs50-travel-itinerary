@@ -2,16 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 
+import { checkLocationExists } from '../../helpers/checkLocation';
+
 const convertDate = (date) => {
   return date;
-}
-
-const checkLocationExists = (locations, inputtedLocation) => {
-  if (locations.filter(i => i.name == inputtedLocation)) {
-    return true;
-  }
-  
-  return false;
 }
 
 export const ItineraryForm = () => {
