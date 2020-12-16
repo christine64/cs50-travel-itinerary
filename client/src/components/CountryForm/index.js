@@ -4,7 +4,9 @@ import { useForm } from "react-hook-form";
 export const CountryForm = ({ submitFunc }) => {
   const { register, handleSubmit, errors, reset } = useForm();
 
-  const onSubmit = data => { 
+  const onSubmit = data => {
+    data.owner = 2;
+
     submitFunc(data);
     reset();
   };

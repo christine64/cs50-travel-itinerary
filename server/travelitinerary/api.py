@@ -1,6 +1,6 @@
 from travelitinerary.models import Location, Activity, Itinerary, Wishlist, User
 from rest_framework import viewsets, permissions
-from .serializers import LocationSerializer, ItinerarySerializer, ActivitySerializer, WishlistSerializer, RequestWishlistSerializer, UserSerializer, UserSerializerWithToken
+from .serializers import LocationSerializer, ItinerarySerializer, RequestItinerarySerializer, ActivitySerializer, WishlistSerializer, RequestWishlistSerializer, UserSerializer, UserSerializerWithToken
 
 class LocationViewSet(viewsets.ModelViewSet):
     queryset = Location.objects.filter(owner_id=2)
@@ -37,6 +37,13 @@ class RequestWishlistViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = RequestWishlistSerializer
+
+class RequestItineraryViewSet(viewsets.ModelViewSet):
+    queryset = Itinerary.objects.filter(owner_id=2)
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = RequestItinerarySerializer
 
 class CurrentUserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()

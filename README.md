@@ -35,7 +35,7 @@ Dependent on the python installation on your machine, this will either be python
 This will start up the app on localhost:8000, and you should be able to see the back end development build running on development server.
 
 ### Features
-# Login - Created using an API endpoint
+# Login & Signup JWT Token - Created using an API endpoint
 # Travel Itinerary
 1. Displays travel itinerary with information on location, travel dates and activities (API endpoint retrieval)
 2. Can add a new travel itinerary from a form that posts to the our django app (API endpoint creation)

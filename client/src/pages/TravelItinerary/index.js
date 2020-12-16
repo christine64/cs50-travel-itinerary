@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import { ItineraryForm } from '../../components/ItineraryForm';
+
 import './style.css';
 
 export const TravelItinerary = () => {
@@ -9,7 +11,7 @@ export const TravelItinerary = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios('http://localhost:8000/api/itineraries/');
+            const result = await axios('http://localhost:8000/api/getitineraries/');
 
             setData(result.data);
             setLoading(false);
@@ -31,9 +33,13 @@ export const TravelItinerary = () => {
                             <li key={itinerary.id}>
                                 <p>Location:</p>
                                 <p>{ itinerary.location.name }</p>
-                                { console.log(itinerary) }
-                                <p>Activites:</p>
-                                <p>{ itinerary.activites && itinerary.activites[0].name }</p>
+                                {
+                                    (itinerary.activites && itinerary.activites.name !== null) &&
+                                    <span>
+                                        <p>Activites:</p>
+                                        <p>{ itinerary.activites.name }</p>
+                                    </span>
+                                }
                                 <p>Start Date:</p>
                                 <p>{ parseDate(itinerary.start_date) }</p>
                                 <p>End Date:</p>
@@ -44,6 +50,7 @@ export const TravelItinerary = () => {
                     </ul>
                 : <h3>Loading Itineraries...</h3>
             }
+            <ItineraryForm />
         </div>
     )
 }
