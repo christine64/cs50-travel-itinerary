@@ -3,7 +3,7 @@ from rest_framework import viewsets, permissions
 from .serializers import LocationSerializer, ItinerarySerializer, RequestItinerarySerializer, ActivitySerializer, WishlistSerializer, RequestWishlistSerializer, UserSerializer, UserSerializerWithToken
 
 class LocationViewSet(viewsets.ModelViewSet):
-    queryset = Location.objects.filter(owner_id=2)
+    queryset = Location.objects.all()
     permission_classes = [
         permissions.AllowAny
     ]
