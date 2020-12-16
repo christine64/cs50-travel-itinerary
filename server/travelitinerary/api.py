@@ -8,10 +8,6 @@ class LocationViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = LocationSerializer
-    # def get_queryset(self, **kwargs):
-    #     user = self.kwargs.get('request')
-    #     print(user, 'hello===>')
-    #     queryset=Location.objects.filter(owner_id=2)
 
 class ItineraryViewSet(viewsets.ModelViewSet):
     queryset = Itinerary.objects.filter(owner_id=2)
