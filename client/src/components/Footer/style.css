@@ -1,0 +1,31 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 14px;
+    height: 60px;
+}
+
+.footer ul {
+    display: flex;
+}
+
+.footer li a {
+    padding-right: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.footer li a:hover {
+    color: lightgray;
+}
+
+@media only screen and (max-width: 800px) {
+    .footer {
+      padding: 20px 0;
+      flex-direction: column;
+    }
+}

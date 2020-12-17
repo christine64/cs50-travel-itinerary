@@ -1,7 +1,14 @@
 .header {
     background-color: #2d2d2d;
     display: flex;
+    justify-content: space-between;
     padding: 1.5rem 1rem;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .header-nav-link {
@@ -12,4 +19,28 @@
 
 .header-nav-link:hover {
     color: lightgray;
+}
+
+.homepage-header-text {
+    font-size: 40px;
+}
+
+.header .sm-icons {
+    display: flex;
+}
+
+.header .sm-icons li {
+    width: 20px;
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .header-container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .header-container ul {
+        margin-top: 12px;
+    }
 }
