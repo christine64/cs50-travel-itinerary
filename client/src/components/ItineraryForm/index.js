@@ -45,7 +45,11 @@ export const ItineraryForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <label htmlFor="location">Location</label>
-      <input name="location" defaultValue="" ref={register({ required: true })} />
+      <select ref={register} name="location">
+        {
+          locations.map(location => <option value={location.name}>{location.name}</option>)
+        }
+      </select>
 
       <label htmlFor="activity">Activity</label>
       <input name="activity" defaultValue="" ref={register} />
@@ -59,7 +63,7 @@ export const ItineraryForm = () => {
       <input name="end_time" defaultValue="" ref={register} />
 
       { errors.location && <span>This field is required</span> }
-      { error !== '' && error === 'Please add location first' ? <a href="/locations">Please add a location first</a> : error }
+      { error !== '' && error }
       <input type="submit" />
     </form>
   );
