@@ -74,9 +74,10 @@ class RequestItinerarySerializer(serializers.ModelSerializer):
     location = LocationSerializer(read_only=True)
     activites = ActivitySerializer(read_only=True)
     owner = UserSerializer(read_only=True)
+    itinerary = ItinerarySerializer(read_only=True)
 
     class Meta:
-        model = Wishlist
+        model = Itinerary
         depth = 1
         fields = '__all__'
 

@@ -1,3 +1,48 @@
 .travel-itinerary {
     padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.travel-itinerary ul {
+    display: flex;
+    min-width: 700px;
+    align-items: center;
+    justify-content: center;
+}
+
+.travel-itinerary li {
+    padding: 20px;
+}
+
+.travel-itinerary form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    width: 100%;
+    max-width: 336px;
+}
+
+.travel-itinerary form input {
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.travel-itinerary form select {
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.travel-itinerary form label {
+    padding: 1rem 0 0.2rem 0;
+}
+
+.travel-itinerary form .itinerary-form-submission {
+    margin: 1rem 0 0 0;
+    background-color: darkseagreen;
+    color: white;
+    border: 0;
+    padding: 0.5rem 1rem;
 }

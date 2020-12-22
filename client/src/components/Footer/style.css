@@ -7,6 +7,10 @@
     color: white;
     font-size: 14px;
     height: 60px;
+
+    position: absolute;
+    width: 98%;
+    bottom: 0;
 }
 
 .footer ul {

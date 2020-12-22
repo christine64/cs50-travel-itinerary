@@ -47,7 +47,7 @@ export const ItineraryForm = () => {
       <label htmlFor="location">Location</label>
       <select ref={register} name="location">
         {
-          locations.map(location => <option value={location.name}>{location.name}</option>)
+          locations.map((location, i) => <option key={i} value={location.name}>{location.name}</option>)
         }
       </select>
 
@@ -64,7 +64,8 @@ export const ItineraryForm = () => {
 
       { errors.location && <span>This field is required</span> }
       { error !== '' && error }
-      <input type="submit" />
+  
+      <input className="itinerary-form-submission" type="submit" />
     </form>
   );
 };
