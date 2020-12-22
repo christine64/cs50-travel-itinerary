@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch, NavLink } from 'react-router-dom';
+import { Route, Switch, NavLink, Redirect, useHistory } from 'react-router-dom';
 
 import { DefaultErrorPage } from './pages/DefaultErrorPage';
 import { Footer } from './components/Footer';
@@ -19,6 +19,9 @@ const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [error, setError] = useState('');
+  // const [redirectState, setRedirect] = useState(null);
+
+  let history = useHistory();
 
   const fetchJwtToken = () => {
     fetch('http://localhost:8000/api/currentuser/', {
@@ -68,6 +71,8 @@ const App = () => {
         setLoggedIn(true);
         setUsername(json.user.username);
         setError('');
+        history.push('/travel-itinerary')
+        // <Redirect to={'/travel-itinerary'} />
       } else {
         setError(json.non_field_errors);
       }
@@ -184,7 +189,6 @@ const App = () => {
         />
         <Route component={DefaultErrorPage} />
       </Switch>
-      { username && `Hi ${username}` }
       { error }
       <Footer />
     </div>

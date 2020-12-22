@@ -55,6 +55,10 @@
     padding: 10px 45px;
 }
 
+.homepage-section.--long {
+    height: 300px;
+}
+
 @media only screen and (max-width: 780px) {
     .homepage-section  {
       display: flex;

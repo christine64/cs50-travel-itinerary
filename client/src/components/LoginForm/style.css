@@ -1,0 +1,31 @@
+.form-container {
+    min-height: 82vh;
+}
+
+.form-container h1 {
+    font-size: 48px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.login-form .login-form-field {
+    width: 100%;
+    margin: 12px;
+    border-radius: 5px;
+    border: 1px solid darkgray;
+}
+
+.login-form-submit {
+    border-radius: 30px;
+    border: 0;
+    padding: 10px 45px;
+}
