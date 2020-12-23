@@ -23,3 +23,8 @@
     align-items: center;
     margin-top: 1rem;
 }
+
+.wishlist .delete-message {
+    font-size: 10px;
+    margin-top: 1rem;
+}

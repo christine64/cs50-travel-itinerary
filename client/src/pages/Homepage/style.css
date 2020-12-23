@@ -72,11 +72,20 @@
     .homepage-extra-info {
         padding: 15px 0;
     }
+
+    .homepage-section.--final-section {
+        margin-top: -6rem;
+        padding: 3rem 1rem;
+    }
 }
 
 @media only screen and (min-width: 800px) {
     .homepage-section {
       display: flex;
       flex-direction: row;
+    }
+
+    .homepage-section.--final-section {
+        margin-top: -5rem;
     }
 }

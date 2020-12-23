@@ -30,7 +30,7 @@ export const Homepage = () => {
                 </div>
             </div>
 
-            <div className="homepage-section --sm --long">
+            <div className="homepage-section --sm --long --final-section">
                 <p>Ever found yourself writing all your plans in a diary for your holiday, only to then forget it. Well our app [app name] should fix your problem. Have all your travel itineraries in one place, and add further future travel wishlist locations! As well as that we'll show you extra information about that country if you add it to locations.</p>
             </div>
         </div>

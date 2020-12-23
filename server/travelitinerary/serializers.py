@@ -94,12 +94,18 @@ class WishlistSerializer(serializers.ModelSerializer):
         required=False
     )
 
+    owner = serializers.PrimaryKeyRelatedField(
+        many=False,
+        queryset=User.objects.all(),
+        required=False
+    )
+
     def create(self, validated_data):
         return Wishlist.objects.create(**validated_data)
 
     class Meta:
         model = Wishlist
-        fields = ('id', 'location', 'itinerary')
+        fields = ('id', 'location', 'itinerary', 'owner')
 
 class RequestWishlistSerializer(serializers.ModelSerializer):
     location = LocationSerializer(read_only=True)

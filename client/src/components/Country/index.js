@@ -18,7 +18,9 @@ export const Country = ({ match }) => {
         const result = await axios('http://localhost:8000/api/getwishlist/');
 
         if (result) {
-            return result.data.filter((i) => i.id === locationId).length > 0 ? setIsOnWishlist(true) : null;
+            return result.data.filter((i) => i.location.id == locationId).length > 0
+                ? setIsOnWishlist(true)
+                : null;
         }
     };
 
@@ -51,12 +53,13 @@ export const Country = ({ match }) => {
 
         e.preventDefault();
         const data = {
-            "location": Number(locationId)
+            "location": Number(locationId),
+            "owner": 2
         };
 
         axios.post('http://localhost:8000/api/wishlist/', data)
         .then((response) => 
-            response.statusText === 'Created' && setIsOnWishlist(true)
+            response.statusText === 'Created' && setIsOnWishlist(true) && fetchWishlist()
         )
         .catch((error) => displayError(error))
     }
@@ -70,7 +73,7 @@ export const Country = ({ match }) => {
                         countryInformation.map((location, index) =>
                             <div className="country-information" key={`location-${index}`}>
                                 <h1>{ location.name }</h1>
-                                { isOnWishlist ? <p>Country is on wishlist</p> : <button className="country-information-button" onClick={ addToWishlist } value={location.id}>Add To Wishlist</button> }
+                                { isOnWishlist ? <p className="country-information-button">Country is on wishlist</p> : <button className="country-information-button" onClick={ addToWishlist } value={location.id}>Add To Wishlist</button> }
                                 { error }
                                 <img src={ location.flag } alt={`${country.name} flag`} />
                                 <span className="information">

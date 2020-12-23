@@ -13,6 +13,7 @@ export const Wishlist = () => {
 
         setData(result.data);
         setLoading(false);
+        setDeleteMessage('');
     };
 
     const removeFromWishlist = (e) => {
@@ -21,8 +22,11 @@ export const Wishlist = () => {
         const locationId = e.target.value;
 
         axios.delete(`http://localhost:8000/api/wishlist/${locationId}/`)
-        .then(() => {
-            return setDeleteMessage('successfully removed');
+        .then((response) => {
+            if (response.status !== 500 || response.status !== 404) {
+                fetchData();
+                return setDeleteMessage('successfully removed');
+            }
         })
         .catch((error) => {
             fetchData();
@@ -46,7 +50,7 @@ export const Wishlist = () => {
                 )
             }
 
-            { deleteMessage }
+            <span className="delete-message">{ deleteMessage }</span>
         </div>
     )
 }
