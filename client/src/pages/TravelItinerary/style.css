@@ -50,3 +50,9 @@
     border: 0;
     padding: 0.5rem 1rem;
 }
+
+@media only screen and (max-width: 800px) {
+    .travel-itinerary ul {
+      flex-direction: column;
+    }
+}
