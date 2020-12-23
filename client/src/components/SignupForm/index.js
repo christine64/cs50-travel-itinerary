@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import './style.css';
+
 export const SignupForm = ({ handleSignup }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -15,8 +17,8 @@ export const SignupForm = ({ handleSignup }) => {
   }
 
   return (
-      <form onSubmit={e => handleSignup(e, { username, password })}>
-        <h4>Sign Up</h4>
+      <form className="sign-up-form" onSubmit={e => handleSignup(e, { username, password })}>
+        <h1>Sign Up</h1>
         <label htmlFor="username">Username</label>
         <input
           type="text"
@@ -31,7 +33,7 @@ export const SignupForm = ({ handleSignup }) => {
           value={password}
           onChange={handlePasswordChange}
         />
-        <input type="submit" />
+        <input className="submission" type="submit" />
       </form>
   );
 }

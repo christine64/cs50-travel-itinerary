@@ -1,33 +1,26 @@
-.form-container {
-    min-height: 82vh;
-}
-
-.form-container h1 {
-    text-align: center;
-    margin: 10px 0;
-}
-
-.login-form {
+.sign-up-form {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    max-width: 400px;
+    max-width: 336px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
     margin: 0 auto;
+    padding: 10px;
 }
 
-.login-form input {
+.sign-up-form input {
     border-radius: 5px;
     border: 1px solid gray;
     width: 100%;
     padding: 5px 0;
 }
 
-.login-form label {
+.sign-up-form label {
     padding: 0.5rem;
 }
 
-.login-form .submission {
+.sign-up-form .submission {
     background-color: darkseagreen;
     color: white;
     border: 0;

@@ -16,6 +16,10 @@
     padding: 20px;
 }
 
+.travel-itinerary .label {
+    font-weight: bold;
+}
+
 .travel-itinerary form {
     display: flex;
     justify-content: center;

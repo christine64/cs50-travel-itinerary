@@ -96,6 +96,7 @@ const App = () => {
         localStorage.setItem('username', json.user.username);
         setLoggedIn(true);
         setUsername(json.user.username)
+        history.push('/travel-itinerary')
       } else {
         setError(json.non_field_errors);
       }

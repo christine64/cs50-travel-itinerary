@@ -32,7 +32,7 @@ export const Locations = ({ match }) => {
 
     return (
         <div className="locations">
-            <h1>Location</h1>
+            <h1>Locations:</h1>
             {
                 locations.length > 0
                 ? <ul>

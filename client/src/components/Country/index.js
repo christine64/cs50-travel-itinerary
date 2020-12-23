@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import './style.css';
+
 export const Country = ({ match }) => {
     const [country, setData] = useState([]);
     const [error, setError] = useState([]);
+    const [isOnWishlist, setIsOnWishlist] = useState(false);
 
     const [countryInformation, setCountryInformation] = useState([]);
 
     const {
         params: { locationId },
     } = match;
+
+    const fetchWishlist = async () => {
+        const result = await axios('http://localhost:8000/api/getwishlist/');
+
+        if (result) {
+            return result.data.filter((i) => i.id === locationId).length > 0 ? setIsOnWishlist(true) : null;
+        }
+    };
 
     const getCountryInformation = async (name) => {
         const result = await axios(`https://restcountries.eu/rest/v2/name/${name}`);
@@ -30,25 +41,28 @@ export const Country = ({ match }) => {
 
     useEffect(() => {
         fetchData();
+        fetchWishlist();
     }, []);
 
     const addToWishlist = (e) => {
+        if (locationId === '') {
+            displayError('Unable to add location to wishlist, please try again');
+        }
+
         e.preventDefault();
-        const locationId = e.target.value;
         const data = {
-            "location": locationId
+            "location": Number(locationId)
         };
 
         axios.post('http://localhost:8000/api/wishlist/', data)
         .then((response) => 
-            response.statusText === 'Created' && fetchData() && console.log('posted')
+            response.statusText === 'Created' && setIsOnWishlist(true)
         )
-        .catch((error) => displayError(error) )
+        .catch((error) => displayError(error))
     }
 
     return (
-        <div>
-            <h1>Country</h1>
+        <div className="country">
             {
                 countryInformation.length > 0 && 
                 <div>
@@ -56,26 +70,26 @@ export const Country = ({ match }) => {
                         countryInformation.map((location, index) =>
                             <div className="country-information" key={`location-${index}`}>
                                 <h1>{ location.name }</h1>
-                                <button onClick={ addToWishlist } value={location.id}>Add Country To Wishlist</button>
+                                { isOnWishlist ? <p>Country is on wishlist</p> : <button className="country-information-button" onClick={ addToWishlist } value={location.id}>Add To Wishlist</button> }
                                 { error }
                                 <img src={ location.flag } alt={`${country.name} flag`} />
-                                <span>
-                                    Currencies: { 
+                                <span className="information">
+                                    <span className="label">Currencies:</span> { 
                                         location.currencies.length > 1 
                                         ? location.currencies.map((currency, index) => (
                                             <span key={`currency-${index}`}>
-                                                <p>{ currency.code }</p>
+                                                <p> { currency.code }</p>
                                             </span>
                                         ))
                                         : <p>{ location.currencies[0].code }</p>
                                     }
                                 </span>
-                                <span>
-                                    Languages: { 
+                                <span className="information">
+                                    <span className="label">Languages:</span> { 
                                         location.languages.length > 1 
                                         ? location.languages.map((language, index) => (
                                             <span key={`language-${index}`}>
-                                                <p>{ language.name }</p>
+                                                <p> { language.name }</p>
                                             </span>
                                         ))
                                         : <p>{ location.languages[0].name }</p>

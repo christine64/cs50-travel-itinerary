@@ -1,3 +1,25 @@
 .wishlist {
     padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.wishlist .delete {
+    background-color: darkseagreen;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    font-size: 7px;
+    margin-left: 3px;
+    padding: 4px 6px;
+}
+
+.wishlist .wishlist-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
 }

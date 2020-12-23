@@ -8,7 +8,7 @@ const convertDate = (date) => {
   return date;
 }
 
-export const ItineraryForm = () => {
+export const ItineraryForm = ({ updateItineraries }) => {
   const { register, handleSubmit, errors, reset } = useForm();
   const [error, setError] = useState('');
   const [locations, setLocations] = useState([]);
@@ -25,10 +25,15 @@ export const ItineraryForm = () => {
 
   const submitItinerary = (data) => {
     data.owner = 2;
+    data.location = Number(data.location)
 
-    if (!checkLocationExists(locations, data.location)) {
+    if (checkLocationExists(locations, data.location)) {
       axios.post('http://localhost:8000/api/itineraries/', data)
-      .then((response) => response.statusText === 'Created')
+      .then((response) => {
+        if (response.statusText === 'Created') {
+          updateItineraries();
+        }
+      })
       .catch(() => setError('There was an error creating your itinerary'));
     } else {
       setError('Please add location first');
@@ -47,7 +52,7 @@ export const ItineraryForm = () => {
       <label htmlFor="location">Location</label>
       <select ref={register} name="location">
         {
-          locations.map((location, i) => <option key={i} value={location.name}>{location.name}</option>)
+          locations.map((location, i) => <option key={i} value={location.id}>{location.name}</option>)
         }
       </select>
 

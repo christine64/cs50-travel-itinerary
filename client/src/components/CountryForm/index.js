@@ -13,7 +13,6 @@ export const CountryForm = ({ submitFunc, locations }) => {
     if (!checkLocationExists(locations, data.name)) {
       axios.post('http://localhost:8000/api/itineraries/', data)
       .then((response) => response.statusText === 'Created')
-      .catch(() => setError('There was an error adding this country to list'));
     } else {
       setError('This location already exists');
       return;
@@ -34,7 +33,7 @@ export const CountryForm = ({ submitFunc, locations }) => {
       { errors.name && <span>This field is required</span> }
       { error }
       
-      <input type="submit" />
+      <input className="submission" type="submit" />
     </form>
   );
 };

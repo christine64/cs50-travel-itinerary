@@ -36,7 +36,7 @@ export const LoginForm = ({ handleLogin }) => {
             value={password}
             onChange={handlePasswordChange}
         />
-        <input className="login-form-submit" type="submit" />
+        <input className="submission" type="submit" />
       </form>
     </div>
 );

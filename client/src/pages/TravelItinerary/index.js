@@ -9,14 +9,14 @@ export const TravelItinerary = () => {
     const [itineraries, setData] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await axios('http://localhost:8000/api/getitineraries/');
+    const fetchData = async () => {
+        const result = await axios('http://localhost:8000/api/getitineraries/');
 
-            setData(result.data);
-            setLoading(false);
-        };
-       
+        setData(result.data);
+        setLoading(false);
+    };
+
+    useEffect(() => {
         fetchData();
     }, []);
 
@@ -31,7 +31,7 @@ export const TravelItinerary = () => {
                     {
                         itineraries.map(itinerary => ( 
                             <li key={itinerary.id}>
-                                <p>Location:</p>
+                                <p><span className="label">Location:</span></p>
                                 <p>{ itinerary.location.name }</p>
                                 {
                                     (itinerary.activites && itinerary.activites.name !== null) &&
@@ -40,9 +40,9 @@ export const TravelItinerary = () => {
                                         <p>{ itinerary.activites.name }</p>
                                     </span>
                                 }
-                                <p>Start Date:</p>
+                                <p><span className="label">Start Date:</span></p>
                                 <p>{ parseDate(itinerary.start_date) }</p>
-                                <p>End Date:</p>
+                                <p><span className="label">End Date:</span></p>
                                 <p>{ parseDate(itinerary.end_date) }</p>
                             </li> 
                         ))
@@ -50,7 +50,7 @@ export const TravelItinerary = () => {
                     </ul>
                 : <h3>Loading Itineraries...</h3>
             }
-            <ItineraryForm />
+            <ItineraryForm updateItineraries={fetchData} />
         </div>
     )
 }

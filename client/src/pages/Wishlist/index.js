@@ -36,12 +36,12 @@ export const Wishlist = () => {
 
     return (
         <div className="wishlist">
-            <h1>Wishlist</h1>
+            <h1>Your Locations Wishlist:</h1>
             {
                 wishlist.length > 0 && wishlist.map((location, index) => 
-                    <div className="wishlit-item" key={`location-${index}`}>
+                    <div className="wishlist-item" key={`location-${index}`}>
                         <h2>{ location.location.name }</h2>
-                        <button onClick={ removeFromWishlist } value={ location.id }>X</button>
+                        <button className="delete" onClick={ removeFromWishlist } value={ location.id }>X</button>
                     </div>
                 )
             }
